@@ -39,7 +39,7 @@ router.get("/:id", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const products = await Product.findAll({
-    order: [["qty", "ASC"]],
+    order: [["id", "ASC"]],
     // order: [["createdAt", "DESC"]],
   });
   return res.json({

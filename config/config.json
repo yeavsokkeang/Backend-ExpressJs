@@ -1,10 +1,17 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "010504",
-    "database": "product-test",
-    "host": "localhost",
-    "dialect": "postgres"
+    "username": "product_test_oxha_user",
+    "password": "Rns7LSN8O95G2WXC2H7VkbVdAjUJaATH",
+    "database": "product_test_oxha",
+    "host": "dpg-dbm11huc6qcc73fl3i80-a.oregon-postgres.render.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
     "username": "root",
@@ -14,10 +21,17 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "product_test_oxha_user",
+    "password": "Rns7LSN8O95G2WXC2H7VkbVdAjUJaATH",
+    "database": "product_test_oxha",
+    "host": "dpg-dbm11huc6qcc73fl3i80-a.oregon-postgres.render.com",
+    "port": 5432,
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

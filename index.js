@@ -1,13 +1,17 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 
 const { storage } = require("./storage/storage");
 const multer = require("multer");
 const upload = multer({ storage });
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
+
+app.use(cors({ origin: "http://localhost:3000" }));
+app.use(express.json());
 
 const db = require("./models");
 const { User } = require("./models/index");
@@ -24,7 +28,6 @@ db.sequelize
   .authenticate()
   .then(() => console.log("Database connected successfully"))
   .catch((error) => console.error("Unable to connect the database", error));
-
 app.use(express.json()); //for enable midleware to parse JSON data in request body
 
 //we used upload.single to tell "multer" to upload
@@ -344,11 +347,8 @@ app.delete("/products/:productId", async (req, res) => {
   });
 });
 
-app.use(express.json());
-
 app.use("/api/order-details", authMiddleware, orderDetailRoute);
-// app.use("/api/products", authMiddleware, productRoute);
-app.use("/api/products", productRoute);
+app.use("/api/products", authMiddleware, productRoute);
 // app.use("/api/products", productRoute);
 app.use("/api/auth", authRoute);
 

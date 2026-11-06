@@ -276,13 +276,12 @@ app.delete("/users/:userId", async (req, res) => {
 //-----------------------------------------------------------
 //Get all products
 app.get("/products", async (req, res) => {
-  try {
-    const products = await Product.findAll();
-    res.json(products);
-  } catch (err) {
-    console.error("Query failed:", err.parent?.message || err.message);
-    res.status(500).json({ error: err.parent?.message || err.message });
-  }
+  const products = await Product.findAll();
+
+  return res.json({
+    message: "Products retrieved successfully",
+    data: products,
+  });
 });
 
 //Get product by id
